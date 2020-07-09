@@ -1,0 +1,49 @@
+# basic alias stuff
+alias ls="ls --color=auto -h"
+alias ll="ls -l"
+alias la="ls -A"
+alias lal="ls -Al"
+# ssh
+alias droplet="ssh eagle@strange.is"
+alias skel="ssh orns19@skel.ru.is"
+# config
+alias rez="source $CONFIG/zsh/.zshrc"
+alias rex="xrdb -merge $CONFIG/X11/xresources"
+alias edz="vim $CONFIG/zsh/.zshrc"
+alias edi="vim $CONFIG/i3/config"
+alias edx="vim $CONFIG/X11/xresources"
+alias eda="vim $CONFIG/zsh/.zshalias"
+alias edv="vim $CONFIG/vim/vimrc"
+alias edt="vim $CONFIG/alacritty/alacritty.yml"
+alias edp="vim $CONFIG/polybar/config"
+# recompile
+alias res="cd $HOME/sources/st;make;sudo make install;make clean;cd"
+# untar
+alias untar="tar -xzvf"
+# move about
+alias c="cd $CONFIG"
+# shortcuts
+alias v="vim"
+alias py="python"
+alias vimp="vim -u \"NONE\" -RZ --cmd \"set paste\""
+alias space="df -h | grep -wE '(/|home)'"
+# pdf
+alias pdf="zathura --fork"
+# renames
+alias wifi="nmtui"
+# pacman
+alias pi="sudo pacman -S"
+# minecraft
+alias mc="minecraft-launcher &> /dev/null &"
+# latex
+alias texpdf="texi2pdf -c"
+# file manipulation
+alias lowercase="for i in $( ls | grep '[A-Z]' ); do mv -i $i `echo $i | tr 'A-Z' 'a-z'`; done"
+# ip
+alias myip="echo \$(curl -s ifconfig.me)"
+# funstuff
+alias clear="[[ $[ $RANDOM % 10 ] = 1 ]] && cclear || clear"
+# fix stupid directories
+alias gdb="gdb -nh -x \"$XDG_CONFIG_HOME\"/gdb/init"
+alias xbindkeys="xbindkeys -f "$XDG_CONFIG_HOME"/xbindkeys/config"
+

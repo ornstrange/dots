@@ -1,0 +1,160 @@
+# Modkey Win
+set $mod Mod4
+
+# Disable mouse focus
+focus_follows_mouse no
+
+# Font
+font "-xos4-terminesspowerline-medium-*-*-*-18-*-*-*-*-*-*-*"
+
+# start a terminal
+bindsym $mod+Return exec alacritty
+
+# start chromium
+bindsym $mod+c exec chromium
+
+# start discord
+bindsym $mod+d exec discord-canary
+
+# start dmenu
+bindsym $mod+a exec dmenu_run -fn 'xos4 Terminus:size=14' -o 0.8 -h 40
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# split toggle
+bindsym $mod+s split toggle
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# enter floating mode
+bindsym $mod+w floating toggle ; resize set 1024px ; move container position center
+bindsym $mod+Tab focus mode_toggle
+
+# enter tabbed mode
+bindsym $mod+e layout tabbed
+
+# enter stacking mode
+bindsym $mod+t layout default
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $sod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+space workspace $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'exit i3?' -B 'yes' 'i3-msg exit' -f '-xos4-terminesspowerline-medium-*-*-*-18-*-*-*-*-*-*-*'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+    bindsym $mod+h resize shrink width 4 px or 4 ppt
+    bindsym $mod+j resize shrink height 4 px or 4 ppt
+    bindsym $mod+k resize grow height 4 px or 4 ppt
+    bindsym $mod+l resize grow width 4 px or 4 ppt
+    bindsym $mod+Shift+h resize shrink width 16 px or 16 ppt
+    bindsym $mod+Shift+j resize shrink height 16 px or 16 ppt
+    bindsym $mod+Shift+k resize grow height 16 px or 16 ppt
+    bindsym $mod+Shift+l resize grow width 16 px or 16 ppt
+    bindsym q mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# set 1px border
+default_border pixel 0
+
+# i3 gaps config
+gaps inner 16
+smart_borders on
+
+# gotop to ws10
+for_window [title="gotop"] move to workspace $ws10
+# discord on ws3
+for_window [class="discord"] move to workspace $ws3
+# chromium on ws2
+for_window [class="Chromium"] move to workspace $ws2
+
+# title
+for_window [class=".*"] title_format %title
+title_align center
+
+# class                 border      backgr.     text        indicator   child_border
+client.focused          #383838     #000000     #f8f8f8     #99784c     #121212
+client.focused_inactive #000000     #000000     #f8f8f8     #585858     #585858
+client.unfocused        #282828     #000000     #383838     #333333     #585858
+client.urgent           #000000     #000000     #f8f8f8     #900000     #f12300
+client.placeholder      #000000     #000000     #f8f8f8     #000000     #0c0c0c
+client.background       #000000
+
+# take screenshot
+bindsym $mod+Print exec deepin-screen-recorder
+
+# scratchpad
+bindsym $mod+x exec ~/.config/scripts/scratchpad.sh
+
+# python scratchpad
+bindsym $mod+p exec ~/.config/scripts/scratchpy.sh
+
+# force autorandr screencheck
+exec_always --no-startup-id autorandr -c --force
+
+# start polybar
+exec_always --no-startup-id sleep .4 ; ~/.config/polybar/start.sh
+
+# set background
+exec_always --no-startup-id sleep .4 ; ~/.config/.fehbg
+
+# lockscreen
+bindsym $mod+shift+x exec --no-startup-id i3lock -B=100 -u
+
+# startup
+exec --no-startup-id ~/.config/scripts/startup.sh
+ 

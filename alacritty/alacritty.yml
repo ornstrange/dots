@@ -1,0 +1,131 @@
+# Any items in the `env` entry below will be added as environment variables.
+env:
+  # TERM variable
+  TERM: alacritty
+
+window:
+  # Window padding (changes require restart)
+  padding:
+    x: 8
+    y: 8
+
+  # Spread additional padding evenly around the terminal content.
+  dynamic_padding: true
+
+  # Window decorations full / none
+  decorations: full
+
+  # Window class (Linux/BSD only):
+  class:
+    # Application instance name
+    instance: Alacritty
+    # General application class
+    general: Alacritty
+
+scrolling:
+  # Maximum number of lines in the scrollback buffer.
+  history: 100000
+
+# Font configuration
+font:
+  normal:
+    # Font family
+    family: xos4 Terminus
+
+  # Point size
+  size: 10.0
+
+  # Offset is the extra space around each character. `offset.y` can be thought of
+  # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
+  offset:
+    x: 0
+    y: 0
+
+# Base16 mine 256 - alacritty color config
+colors:
+  # Default colors
+  primary:
+    background: '0x000000'
+    foreground: '0xd0d0d0'
+
+  # Colors the cursor will use if `custom_cursor_colors` is true
+  cursor:
+    text: '0x000000'
+    cursor: '0xd0d0d0'
+
+  # Normal colors
+  normal:
+    black:   '0x000000'
+    red:     '0xac4142'
+    green:   '0x90a959'
+    yellow:  '0xf4bf75'
+    blue:    '0x6a9fb5'
+    magenta: '0xaa759f'
+    cyan:    '0x75b5aa'
+    white:   '0xd0d0d0'
+
+  # Bright colors
+  bright:
+    black:   '0x505050'
+    red:     '0xac4142'
+    green:   '0x90a959'
+    yellow:  '0xf4bf75'
+    blue:    '0x6a9fb5'
+    magenta: '0xaa759f'
+    cyan:    '0x75b5aa'
+    white:   '0xf8f8f8'
+
+  indexed_colors:
+    - { index: 16, color: '0xd28445' }
+    - { index: 17, color: '0x8f5536' }
+    - { index: 18, color: '0x202020' }
+    - { index: 19, color: '0x303030' }
+    - { index: 20, color: '0xb0b0b0' }
+    - { index: 21, color: '0xe0e0e0' }
+
+# Background opacity
+background_opacity: 0.8
+
+# Allow terminal applications to change Alacritty's window title.
+dynamic_title: true
+
+# Live config reload (changes require restart)
+live_config_reload: true
+
+# Directory the shell is started in. If this is unset, or `None`, the working
+# directory of the parent process will be used.
+working_directory: /home/ornstrange
+
+# Mouse bindings
+mouse_bindings:
+  - { mouse: Middle, action: PasteSelection }
+
+# Key bindings
+key_bindings:
+  - { key: Paste,                                action: Paste          }
+  - { key: Copy,                                 action: Copy           }
+  - { key: L,         mods: Control, mode: ~Vi,  chars: "\x0c"          }
+  - { key: PageUp,    mods: Shift,   mode: ~Alt, action: ScrollPageUp,  }
+  - { key: PageDown,  mods: Shift,   mode: ~Alt, action: ScrollPageDown }
+  - { key: Home,      mods: Shift,   mode: ~Alt, action: ScrollToTop,   }
+  - { key: End,       mods: Shift,   mode: ~Alt, action: ScrollToBottom }
+
+  # Vi Mode
+  - { key: Escape,                      mode: Vi, action: ClearSelection          }
+  - { key: I,                           mode: Vi, action: ToggleViMode            }
+  - { key: G,                           mode: Vi, action: ScrollToTop             }
+  - { key: G,      mods: Shift,         mode: Vi, action: ScrollToBottom          }
+  - { key: K,                           mode: Vi, action: Up                      }
+  - { key: J,                           mode: Vi, action: Down                    }
+  - { key: H,                           mode: Vi, action: Left                    }
+  - { key: L,                           mode: Vi, action: Right                   }
+
+  # (Windows, Linux, and BSD only)
+  - { key: V,        mods: Control|Shift,           action: Paste            }
+  - { key: C,        mods: Control|Shift,           action: Copy             }
+  - { key: Insert,   mods: Shift,                   action: PasteSelection   }
+  - { key: Add,      mods: Control,                 action: IncreaseFontSize }
+  - { key: Subtract, mods: Control,                 action: DecreaseFontSize }
+  - { key: Minus,    mods: Control,                 action: DecreaseFontSize }
+  - { key: Return,   mods: Control|Shift,           action: SpawnNewInstance }
+

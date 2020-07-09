@@ -1,0 +1,10 @@
+#!/bin/sh
+
+ssid=$(nmcli -t -f active,ssid d wifi | grep "yes:" | cut -d ":" -f 2)
+signal=$(nmcli -t -f active,signal d wifi | grep "yes:" | cut -d ":" -f 2)
+device=$(nmcli -t -f state,device connection | grep -m 1 activated | cut -d ":" -f 2)
+
+([[ "$device" == "enp0s25" ]] && echo "wired") ||
+([[ ! -z "$ssid" ]] && echo "$ssid $signal%") || 
+echo "no internet"
+

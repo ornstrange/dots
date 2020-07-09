@@ -1,0 +1,42 @@
+!! base-16 default dark colors
+*.color0: #000000
+*.color1: #ab4642
+*.color2: #a1b56c
+*.color3: #f7ca88
+*.color4: #7cafc2
+*.color5: #ba8baf
+*.color6: #86c1b9
+*.color7: #d8d8d8
+*.color8: #585858
+*.color9: #dc9656
+*.color10: #282828
+*.color11: #383838
+*.color12: #b8b8b8
+*.color13: #e8e8e8
+*.color14: #a16946
+*.color15: #f8f8f8
+
+*.background: #000000
+
+!! st
+st.alpha: .85
+st.borderpx: 12
+st.chscale: 1.0
+st.cwscale: 1.0
+st.font: xos4 Terminus:pixelsize=22;
+
+!! rofi font
+rofi.font: xos4 Terminus:pixelsize=24;
+
+!! feh font
+feh.font: xos4 Terminus:pixelsize=24;
+
+!! font rendering
+! Xft.dpi: 96
+Xft.autohint: 1
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+

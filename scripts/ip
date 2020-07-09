@@ -1,0 +1,8 @@
+#!/bin/sh
+
+ipe=$(ip address | grep enp0s25 | grep inet | cut -d "/" -f 1 | cut -b 10-100)
+ipw=$(ip address | grep wlp3s0 | grep inet | cut -d "/" -f 1 | cut -b 10-100)
+
+[[ ! -z "$ipe" ]] && echo "$ipe" ||\
+[[ ! -z "$ipw" ]] && echo "$ipw" ||\
+echo "127.0.0.1"

@@ -1,0 +1,32 @@
+###########################
+# xbindkeys configuration #
+###########################
+
+# By defaults, xbindkeys does not pay attention with the modifiers
+# NumLock, CapsLock and ScrollLock.
+# Uncomment the lines above if you want to pay attention to them.
+
+#keystate_numlock = enable
+#keystate_capslock = enable
+#keystate_scrolllock= enable
+
+# increase volume
+".config/scripts/vol.sh up"
+    XF86AudioRaiseVolume
+# decrease volume
+".config/scripts/vol.sh down"
+    XF86AudioLowerVolume
+# mute volume
+".config/scripts/vol.sh"
+    XF86AudioMute
+
+# increase backlight
+".config/scripts/backlight.sh up"
+    XF86MonBrightnessUp
+# decrease backlight
+".config/scripts/backlight.sh down"
+    XF86MonBrightnessDown
+
+##################################
+# End of xbindkeys configuration #
+##################################
