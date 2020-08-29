@@ -2,30 +2,42 @@
 # xbindkeys configuration #
 ###########################
 
-# By defaults, xbindkeys does not pay attention with the modifiers
-# NumLock, CapsLock and ScrollLock.
-# Uncomment the lines above if you want to pay attention to them.
-
-#keystate_numlock = enable
-#keystate_capslock = enable
-#keystate_scrolllock= enable
-
 # increase volume
-".config/scripts/vol.sh up"
+"$CONFIG/scripts/vol.sh up"
     XF86AudioRaiseVolume
 # decrease volume
-".config/scripts/vol.sh down"
+"$CONFIG/scripts/vol.sh down"
     XF86AudioLowerVolume
 # mute volume
-".config/scripts/vol.sh"
+"$CONFIG/scripts/vol.sh"
     XF86AudioMute
 
 # increase backlight
-".config/scripts/backlight.sh up"
+"$CONFIG/scripts/backlight.sh up"
     XF86MonBrightnessUp
 # decrease backlight
-".config/scripts/backlight.sh down"
+"$CONFIG/scripts/backlight.sh down"
     XF86MonBrightnessDown
+
+# dmenu
+# "$CONFIG/herbstluftwm/dmenu_run_hlwm"
+#     Mod4 + a
+
+# take screenshot
+"deepin-screen-recorder"
+    Mod4 + Print
+
+# scratchpad
+"$CONFIG/scripts/scratchpad.sh"
+    Mod4 + x
+
+# python scratchpad
+"$CONFIG/scripts/scratchpy.sh"
+    Mod4 + p
+
+# lockscreen
+"i3lock -B=100 -u"
+    Mod4 + Shift + x
 
 ##################################
 # End of xbindkeys configuration #

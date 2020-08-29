@@ -3,9 +3,13 @@ alias ls="ls --color=auto -h"
 alias ll="ls -l"
 alias la="ls -A"
 alias lal="ls -Al"
+alias cp="cp -i"
+alias mv="mv -i"
+alias df="df -h"
 # ssh
-alias droplet="ssh eagle@strange.is"
+alias droplet="export TERM=xterm ; ssh eagle@strange.is ; export TERM=alacritty"
 alias skel="ssh orns19@skel.ru.is"
+alias router="ssh root@192.168.1.69"
 # config
 alias rez="source $CONFIG/zsh/.zshrc"
 alias rex="xrdb -merge $CONFIG/X11/xresources"
@@ -27,6 +31,7 @@ alias v="vim"
 alias py="python"
 alias vimp="vim -u \"NONE\" -RZ --cmd \"set paste\""
 alias space="df -h | grep -wE '(/|home)'"
+alias hc="herbstclient"
 # pdf
 alias pdf="zathura --fork"
 # renames
@@ -41,9 +46,10 @@ alias texpdf="texi2pdf -c"
 alias lowercase="for i in $( ls | grep '[A-Z]' ); do mv -i $i `echo $i | tr 'A-Z' 'a-z'`; done"
 # ip
 alias myip="echo \$(curl -s ifconfig.me)"
-# funstuff
-alias clear="[[ $[ $RANDOM % 10 ] = 1 ]] && cclear || clear"
 # fix stupid directories
 alias gdb="gdb -nh -x \"$XDG_CONFIG_HOME\"/gdb/init"
 alias xbindkeys="xbindkeys -f "$XDG_CONFIG_HOME"/xbindkeys/config"
+alias java="java $_SILENT_JAVA_OPTIONS"
+# fix stupid programs
+alias dmenu="dmenu -fn \"xos4 Terminus:size=13\" -h 42"
 

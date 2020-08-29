@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-exec picom --experimental-backends --config ~/.config/picom.conf -b &
-exec unclutter -b --timeout 1 &
-exec twmnd &
-exec alacritty &
-exec alacritty -t "gotop" -e gotop &
+killall picom ; exec picom --experimental-backends --config ~/.config/picom.conf -b
+killall unclutter ; exec unclutter -b --timeout 1
+killall twmnd ; exec twmnd &
+pgrep alacritty &> /dev/null || exec alacritty &
+[[ "$1" == "i3" ]] && exec alacritty -t "gotop" -e gotop &
 

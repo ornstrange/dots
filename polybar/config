@@ -1,13 +1,24 @@
 [colors]
-background = #000000
-background-alt = #585858
-foreground = #f8f8f8
-foreground-alt = #a8a8a8
-primary = #ab4642
-secondary = #a1b56c
-alert = #ba8baf
+# background = #000000
+# background-alt = #585858
+# foreground = #f8f8f8
+# foreground-alt = #a8a8a8
+# primary = #ab4642
+# secondary = #a1b56c
+# alert = #ba8baf
+background = ${xrdb:color0:#000000}
+background-alt = ${xrdb:color8:#585858}
+foreground = ${xrdb:color7:#f8f8f8}
+foreground-alt = ${xrdb:color6:#a8a8a8}
+primary = ${xrdb:color3:#ab4642}
+secondary = ${xrdb:color2:#a1b56c}
+alert = ${xrdb:color6:#ba8baf}
 
 [bar/bot]
+offset-x = 32
+offset-y = 16
+width = 100%:-64
+
 bottom = true
 height = 40
 radius = 0.0
@@ -22,13 +33,22 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = xos4 Terminus:antialias=false:authohint=false:pixelsize=18;1
+font-0 = xos4 Terminus:pixelsize=18;1
 
-modules-left = rootfs homefs
-modules-center = network ip
+modules-left = network ip
+modules-center = colors
 modules-right = pulseaudio
 
+override-redirect = true
+
+border-size = 1
+border-color = ${colors.primary}
+
 [bar/top]
+offset-x = 16
+offset-y = 16
+width = 100%:-32
+
 height = 40
 fixed-center = true 
 
@@ -46,6 +66,36 @@ font-0 = xos4 Terminus:antialias=false:authohint=false:pixelsize=18;1
 modules-left = battery
 modules-center = i3
 modules-right = date clock
+
+override-redirect = true
+
+border-size = 1
+border-color = ${colors.primary}
+
+[bar/top-herbst]
+offset-x = 32
+offset-y = 16
+width = 100%:-64
+height = 40
+fixed-center = true 
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+padding-left = 2
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = xos4 Terminus:antialias=false:authohint=false:pixelsize=18;1
+
+modules-left = battery
+modules-center = herbstluft
+modules-right = date clock
+
+border-size = 1
+border-color = ${colors.primary}
 
 [module/backlight]
 type = internal/backlight
@@ -68,8 +118,10 @@ type = internal/pulseaudio
 sink = alsa_output.pci-0000_12_00.3.analog-stereo
 use-ui-max = false
 
-format-volume = <ramp-volume>
+# format-volume = <ramp-volume>
+format-volume = <label-volume>
 format-muted = <label-muted>
+label-volume = volume %percentage%%
 label-muted = mute
 ramp-volume-foreground = ${colors.foreground}
 ramp-volume-0 = ●·········
@@ -105,7 +157,7 @@ format-foreground = ${colors.foreground}
 type = custom/script
 exec = ~/.config/scripts/ip
 interval = 10
-format-foreground = ${colors.foreground-alt}
+format-foreground = ${colors.foreground}
 
 [module/clock]
 type = internal/date
@@ -144,6 +196,29 @@ type = internal/fs
 mount-0 = /home
 interval = 60
 label-mounted = home %percentage_used%%
+
+[module/herbstluft]
+type = custom/script
+exec = $CONFIG/herbstluftwm/polybarws.py
+tail = true
+
+[module/herbstluft-old]
+type = custom/script
+
+exec = ~/.config/herbstluftwm/pollws.sh
+interval = 0
+format-prefix = "─── "
+format-suffix = " ───"
+format-prefix-foreground = ${colors.foreground-alt}
+format-suffix-foreground = ${colors.foreground-alt}
+format-foreground = ${colors.foreground}
+format = <label>
+
+[module/colors]
+type = custom/script
+
+exec = $CONFIG/scripts/walcolors.sh
+interval = 5
 
 [settings]
 screenchange-reload = true

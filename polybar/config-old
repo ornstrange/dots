@@ -1,0 +1,145 @@
+;==========================================================
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;==========================================================
+
+[colors]
+#background = #181818
+background = #000000
+background-alt = #585858
+foreground = #f8f8f8
+foreground-alt = #a8a8a8
+primary = #ab4642
+#secondary = #a1b56c
+#alert = #ba8baf
+
+[bar/main2]
+inherit = bar/main
+monitor="DP1"
+padding-left = 3
+padding-right = 4
+height = 49 
+# Font
+font-0 = xos4 Terminus:antialias=false:authohint=false:pixelsize=27;1
+
+[bar/main3]
+inherit = bar/main
+monitor="DP1"
+
+[bar/main]
+monitor="eDP1"
+width = 100%
+height = 50
+radius = 0.0
+fixed-center = true 
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 0
+line-color = ${colors.background}
+
+border-size = 0
+#border-bottom-size = 1
+border-color = ${colors.foreground}
+
+padding-left = 1
+padding-right = 2
+padding-bottom = 12
+
+module-margin-left = 0
+module-margin-right = 0
+
+# Font
+font-0 = xos4 Terminus:antialias=false:authohint=false:pixelsize=24;1
+
+# Modules
+modules-left = i3
+modules-center = battery network ip
+modules-right = date clock
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/date]
+type = internal/date
+interval = 100
+
+date = "%d-%m-%y"
+
+format-foreground = ${colors.foreground}
+format-suffix = " :: "
+format-suffix-foreground = ${colors.background-alt}
+
+label = %date%
+
+[module/battery]
+type = custom/script
+exec = ~/.config/scripts/battery
+interval = 1
+format-foreground = ${colors.foreground}
+
+[module/network]
+type = custom/script
+exec = ~/.config/scripts/network
+interval = 1
+format-foreground = ${colors.foreground}
+format-prefix = " :: "
+format-prefix-foreground = ${colors.background-alt}
+
+[module/ip]
+type = custom/script
+exec = ~/.config/scripts/ip
+interval = 1
+format-foreground = ${colors.foreground}
+format-prefix = " :: "
+format-prefix-foreground = ${colors.background-alt}
+
+[module/clock]
+type = internal/date
+date = "%H:%M:%S"
+interval = 1
+format-foreground = ${colors.foreground}
+
+[module/i3]
+type = internal/i3
+
+pin-workspaces = true
+
+strip-wsnumbers = true
+
+index-sort = true
+
+enable-click = true
+
+fuzzy-match = true
+
+format = <label-state>
+
+label-focused = %name%
+label-focused-foreground = ${colors.foreground}
+label-focused-padding = 0
+
+label-unfocused = %name%
+label-unfocused-foreground = ${colors.foreground-alt}
+label-unfocused-padding = 0
+
+label-urgent = %name%
+label-urgent-foreground = ${colors.primary}
+label-urgent-padding = 0
+
+; Separator in between workspaces
+label-separator = "::"
+label-separator-padding = 1
+label-separator-foreground = ${colors.background-alt}
+
+[settings]
+screenchange-reload = true
+
+; vim:syntax=dosini

@@ -25,7 +25,7 @@ fi
 
 if [ -d /etc/X11/xinit/xinitrc.d ] ; then
     for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
-        [ -x "$f"] && . "$f"
+        [ -x "$f" ] && . "$f"
     done
     unset f
 fi
@@ -39,5 +39,5 @@ xbindkeys -f "$XDG_CONFIG_HOME"/xbindkeys/config &
 # set kbd repeat rate
 xset r rate 200 60
 
-# then start herbstluftwm
-exec herbstluftwm --locked
+# then start i3 or dwm
+exec i3

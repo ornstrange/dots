@@ -1,9 +1,3 @@
-# Base16 Shell
-BASE16_SHELL="$XDG_CONFIG_HOME/base16-shell/"
-[ -n "$PS1" ] && \
-    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-        eval "$("$BASE16_SHELL/profile_helper.sh")"
-
 # completion
 zstyle ':completion:*' completer_expand _complete _ignored
 zstyle ':completion:*' completions 1
@@ -51,7 +45,7 @@ path+=$HOME/bin
 path+=$HOME/.local/bin
 
 # aliases
-source $XDG_CONFIG_HOME/zsh/.zshalias 
+source $XDG_CONFIG_HOME/zsh/.zshalias
 
 # use vim keys
 bindkey -v
@@ -70,4 +64,7 @@ if type compdef &>/dev/null; then
 
   compdef __ionic ionic
 fi
+
+# set colors
+cat $XDG_CACHE_HOME/wal/sequences &!
 

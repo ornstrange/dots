@@ -26,7 +26,7 @@ st.cwscale: 1.0
 st.font: xos4 Terminus:pixelsize=22;
 
 !! rofi font
-rofi.font: xos4 Terminus:pixelsize=24;
+!! rofi.font: xos4 Terminus:pixelsize=24;
 
 !! feh font
 feh.font: xos4 Terminus:pixelsize=24;
