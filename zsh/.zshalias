@@ -7,9 +7,9 @@ alias cp="cp -i"
 alias mv="mv -i"
 alias df="df -h"
 # ssh
-alias droplet="export TERM=xterm ; ssh eagle@strange.is ; export TERM=alacritty"
+alias droplet="export TERM=xterm; ssh eagle@strange.is; export TERM=alacritty"
 alias skel="ssh orns19@skel.ru.is"
-alias router="ssh root@192.168.1.69"
+alias router="export TERM=xterm; ssh root@192.168.1.69 export TERM=alacritty"
 # config
 alias rez="source $CONFIG/zsh/.zshrc"
 alias rex="xrdb -merge $CONFIG/X11/xresources"
@@ -52,4 +52,6 @@ alias xbindkeys="xbindkeys -f "$XDG_CONFIG_HOME"/xbindkeys/config"
 alias java="java $_SILENT_JAVA_OPTIONS"
 # fix stupid programs
 alias dmenu="dmenu -fn \"xos4 Terminus:size=13\" -h 42"
+# weather
+alias weather="echo; curl wttr.in > /tmp/wttr &> /dev/null; cat /tmp/wttr | tail -n +3 | head -n 5; echo"
 
